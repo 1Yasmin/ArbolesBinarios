@@ -1,5 +1,5 @@
 
-public class Asociacion<K, V> {
+public class Asociacion<K extends Comparable<K>, V> implements Comparable<Asociacion<K, V>> {
 
 
 	protected K key;
@@ -33,7 +33,7 @@ public class Asociacion<K, V> {
 	     */
 	    public boolean equals(Object other)
 	    {
-	        Asociacion otherAssoc = (Asociacion)other;
+	        Asociacion<K, V> otherAssoc = (Asociacion<K, V>)other;
 	        return getKey().equals(otherAssoc.getKey());
 	    }
 	    
@@ -80,8 +80,8 @@ public class Asociacion<K, V> {
      */
     public V setValue(V value)
     {
-        V oldValue = value;
-        value = value;
+        V oldValue = this.value;
+        this.value = value;
         return oldValue;
     }
 
@@ -94,7 +94,12 @@ public class Asociacion<K, V> {
     public String toString()
     {
         StringBuffer s = new StringBuffer();
-        s.append("\n"+" DPI: "+getKey()+" name: "+getValue());
+        s.append(" KEY: "+getKey()+" VALUE: "+getValue());
         return s.toString();
     }
+    
+	@Override
+	public int compareTo(Asociacion<K, V> o) {
+		return key.compareTo(o.getKey());
+	}
 }
