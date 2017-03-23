@@ -136,7 +136,7 @@ public class BinarySearchTree <E extends Comparable<E>>{
 	public void display(Node<E> root){
 		if(root!=null){
 			display(root.left);
-			System.out.print(" " + root.data);
+			System.out.print(root.data + " ");
 			display(root.right);
 		}
 	}

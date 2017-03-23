@@ -94,7 +94,7 @@ public class Asociacion<K extends Comparable<K>, V> implements Comparable<Asocia
     public String toString()
     {
         StringBuffer s = new StringBuffer();
-        s.append(" KEY: "+getKey()+" VALUE: "+getValue());
+        s.append("("+getKey()+", "+getValue() + ")");
         return s.toString();
     }
     

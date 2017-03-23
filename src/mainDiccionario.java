@@ -26,6 +26,10 @@ public class mainDiccionario {
 		}
 		bf.close();
 		
+		System.out.print("Elementos in-order: ");
+		b.display(b.getRoot());
+		System.out.println("\n");
+		
 		fr = new FileReader("texto.txt");
 		bf = new BufferedReader(fr);
 		while ((cadena = bf.readLine()) != null) {
@@ -43,8 +47,8 @@ public class mainDiccionario {
 		}
 		bf.close();
 		
-		System.out.println(texto);
-		System.out.println(textoTraducido);
+		System.out.println("Texto Original:\n" + texto);
+		System.out.println("Texto Traducido:\n" + textoTraducido);
 		
 		//b.display(b.getRoot());
 	}
