@@ -6,18 +6,18 @@ public class BinarySearchTree <E extends Comparable<E>>{
 		this.root = null;
 	}
 	
-	public boolean find(E id){
+	public E find(E id){
 		Node<E> current = root;
 		while(current!=null){
 			if(current.data.equals(id)){
-				return true;
+				return current.data;
 			}else if(current.data.compareTo(id)>0){
 				current = current.left;
 			}else{
 				current = current.right;
 			}
 		}
-		return false;
+		return null;
 	}
 	public Node<E> getRoot() {
 		return root;
