@@ -1,2 +1,6 @@
-(Hi, hola)
-(How, como)
+(house, casa)
+(dog, perro)
+(homework, tarea)
+(woman, mujer)
+(town, pueblo)
+(yes, si)

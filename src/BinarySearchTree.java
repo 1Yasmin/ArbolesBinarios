@@ -1,7 +1,7 @@
 
 
 public class BinarySearchTree <E extends Comparable<E>>{
-	public Node<E> root;
+	private Node<E> root;
 	public BinarySearchTree(){
 		this.root = null;
 	}
@@ -19,6 +19,14 @@ public class BinarySearchTree <E extends Comparable<E>>{
 		}
 		return false;
 	}
+	public Node<E> getRoot() {
+		return root;
+	}
+
+	public void setRoot(Node<E> root) {
+		this.root = root;
+	}
+
 	public boolean delete(E id){
 		Node<E> parent = root;
 		Node<E> current = root;
