@@ -3,7 +3,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
-public class mainDiccionario {
+public class MainJCF {
 
 	public static void main(String[] args) throws IOException{
 		
@@ -17,41 +17,19 @@ public class mainDiccionario {
 		//Utilizacion de buffered Reader para obtener los datos de un archivo de texto
 		FileReader fr = new FileReader("diccionario.txt");
 	 	BufferedReader bf = new BufferedReader(fr);
+	 	
 	 	// Limpia la cadena de palabras para formar las asociaciones
 		while ((cadena = bf.readLine()) != null) {
 			cadena = cadena.replaceAll("[()]", "");
 			String[] datos = cadena.split("\\s*,\\s*");
+			
 			// crear las asociaciaciones
 			b.add(new Asociacion<String, String>(datos[0], datos[1]));
 		}
-		bf.close();
-		
-		/*
-		System.out.print("Elementos in-order: ");
-		b.display(b.get());
-		System.out.println("\n");
-		
-		fr = new FileReader("texto.txt");
-		bf = new BufferedReader(fr);
-		while ((cadena = bf.readLine()) != null) {
-			texto += cadena + "\n";
-			cadena = cadena.replace(",", "").replace(".", "").toLowerCase();
-			String[] palabras = cadena.split("\\s+");
-			for(int i=0; i<palabras.length;i++){
-				Asociacion<String, String> match = b.find(new Asociacion<String, String>(palabras[i], ""));
-				if(match != null){
-					textoTraducido += match.value + " ";
-				}else{
-					textoTraducido += "*" + palabras[i] + "* ";
-				}
-			}
-		}
-		bf.close();	
-			
-		*/
+		bf.close(); // cierra el txt
 		
 		System.out.print("Elementos in-order: \n");
-		// recorrer el arbol y regresarlo en in-order
+		//Imprime los elementos del arbol in-order
 		for( Iterator it = b.iterator(); it.hasNext(); ) { 
 				Asociacion<String,String> x = (Asociacion<String,String>)it.next();
 			    System.out.println(x.toString());

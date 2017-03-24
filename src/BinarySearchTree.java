@@ -1,11 +1,13 @@
-/**
 
 public class BinarySearchTree <E extends Comparable<E>>{
 	private Node<E> root;
+	
+	//Constructor
 	public BinarySearchTree(){
 		this.root = null;
 	}
 	
+	// Verifica si un nodo esta en el arbol
 	public E find(E id){
 		Node<E> current = root;
 		while(current!=null){
@@ -19,14 +21,18 @@ public class BinarySearchTree <E extends Comparable<E>>{
 		}
 		return null;
 	}
+	
+	// Regresa el nodo
 	public Node<E> getRoot() {
 		return root;
 	}
 
+	//Cambiar los valores del nodo
 	public void setRoot(Node<E> root) {
 		this.root = root;
 	}
 
+	//Borrar un elemento del arbol
 	public boolean delete(E id){
 		Node<E> parent = root;
 		Node<E> current = root;
@@ -44,8 +50,8 @@ public class BinarySearchTree <E extends Comparable<E>>{
 				return false;
 			}
 		}
-		//if i am here that means we have found the node
-		//Case 1: if node to be deleted has no children
+		//Se encuentra el nodo
+		//Caso 1: Si el nodo a borrar no tiene hijos
 		if(current.left==null && current.right==null){
 			if(current==root){
 				root = null;
@@ -56,7 +62,7 @@ public class BinarySearchTree <E extends Comparable<E>>{
 				parent.right = null;
 			}
 		}
-		//Case 2 : if node to be deleted has only one child
+		//Caso 2 : Si el nodo a borrar tiene solo un hijo
 		else if(current.right==null){
 			if(current==root){
 				root = current.left;
@@ -76,7 +82,6 @@ public class BinarySearchTree <E extends Comparable<E>>{
 			}
 		}else if(current.left!=null && current.right!=null){
 			
-			//now we have found the minimum element in the right sub tree
 			Node<E> successor	 = getSuccessor(current);
 			if(current==root){
 				root = successor;
@@ -90,6 +95,7 @@ public class BinarySearchTree <E extends Comparable<E>>{
 		return true;		
 	}
 	
+	//regresa el sucesor del nodo
 	public Node<E> getSuccessor(Node<E> deleleNode){
 		Node<E> successsor =null;
 		Node<E> successsorParent =null;
@@ -99,15 +105,14 @@ public class BinarySearchTree <E extends Comparable<E>>{
 			successsor = current;
 			current = current.left;
 		}
-		//check if successor has the right child, it cannot have left child for sure
-		// if it does have the right child, add it to the left of successorParent.
-//		successsorParent
 		if(successsor!=deleleNode.right){
 			successsorParent.left = successsor.right;
 			successsor.right = deleleNode.right;
 		}
 		return successsor;
 	}
+	
+	//Agrega un nodo al arbol
 	public void insert(E id){
 		Node<E> newNode = new Node<E>(id);
 		if(root==null){
@@ -133,6 +138,8 @@ public class BinarySearchTree <E extends Comparable<E>>{
 			}
 		}
 	}
+	
+	//muestra los nodos del arbol
 	public void display(Node<E> root){
 		if(root!=null){
 			display(root.left);
@@ -142,6 +149,7 @@ public class BinarySearchTree <E extends Comparable<E>>{
 	}
 }
 
+//Define el nodo y sus atributos
 class Node<E>{
 	E data;
 	Node<E> left;
@@ -152,4 +160,3 @@ class Node<E>{
 		right = null;
 	}
 }
-*/
